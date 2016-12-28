@@ -61,12 +61,14 @@ def read_clients_info(file):
     Входные данные - имя файла.
     """
     print('|{:<15}|{:<20}|{:<20}|{:<13}|{:<25}|{:<8}|{:<25}|'.format("Name","Last Name","Patronymic","Country","City","Index","Address"))
-    file = open(file, 'r')
-    for line in file.readlines():
-        l = line[:len(line)-2]
-        L = l.split('|')
-        print('|{:<15}|{:<20}|{:<20}|{:<13}|{:<25}|{:<8}|{:<25}|'.format(L[0],L[1],L[2],L[3],L[4],L[5],L[6]))
-
+    try:
+        file = open(file, 'r')
+        for line in file.readlines():
+            l = line[:len(line)-2]
+            L = l.split('|')
+            print('|{:<15}|{:<20}|{:<20}|{:<13}|{:<25}|{:<8}|{:<25}|'.format(L[0],L[1],L[2],L[3],L[4],L[5],L[6]))
+    except Exception as e:
+        print("Файл не найден. {}".format(e))
 
 
 test_client = Client('Konstatin', 'Konstantinopolskiy','Igorevich',
